@@ -1,0 +1,44 @@
+.staticPartnersSection {
+  padding: 50px 0;
+  background-color: #e7effc;
+  text-align: center;
+}
+
+.logoGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.logoItem {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.logoItem img {
+  max-height: 60px;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+.logoItem img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .logoGrid {
+    gap: 30px;
+  }
+
+  .logoItem img {
+    max-height: 40px;
+  }
+}

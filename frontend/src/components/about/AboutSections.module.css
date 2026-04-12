@@ -1,0 +1,462 @@
+/* Shared CSS for all About page sections */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(45deg, #f59f00, #ffbf00);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(245, 159, 0, 0.4);
+}
+
+.section {
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Page Title Section */
+.pageTitleSection {
+  background-color: #20345b;
+  color: white;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.pageTitleSection h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.breadcrumbs {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.breadcrumbs a {
+  color: #f97316;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.breadcrumbs a:hover {
+  opacity: 1;
+}
+
+.breadcrumbs span {
+  color: #f97316;
+  margin: 0 10px;
+}
+
+/* Who We Are Hero Section */
+.whoWeAreHero {
+  background-color: rgba(32, 52, 91, 0.85);
+  backdrop-filter: blur(2px);
+  color: white;
+}
+
+.whoWeAreHero .contentWrapper {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.whoWeAreHero .textContent {
+  flex: 1;
+  color: white;
+}
+
+.whoWeAreHero .imageContent {
+  flex: 1;
+  text-align: center;
+}
+
+.whoWeAreHero .imageContent img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.whoWeAreHero h2 {
+  font-size: 3rem;
+  line-height: 1.3;
+  margin-bottom: 25px;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.highlightOrange {
+  color: #f97316;
+}
+
+.highlightBlue {
+  display: inline-block;
+  position: relative;
+}
+
+.highlightBlue::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='10' viewBox='0 0 100 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 8C21.7953 3.65527 78.2047 3.65527 98 8' stroke='%2344d4f2' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.whoWeAreHero p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.preTitle {
+  color: #f97316;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: block;
+  font-size: 14px;
+}
+
+/* Section Title */
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionTitle .preTitle {
+  color: #f97316;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.sectionTitle h2 {
+  font-size: 2.8rem;
+  color: #20345b;
+  font-weight: 700;
+}
+
+/* Stats Section */
+.statsSection {
+  background-color: #f7f8fc;
+}
+
+.statsWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.statCard {
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.statCard .icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.statNumber {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #20345b;
+}
+
+.statLabel {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Features Grid */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.featureItem {
+  background-color: white;
+  border: 1px solid #e9ecef;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.featureItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.featureItem .icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.featureItem h3 {
+  color: #20345b;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.featureItem p {
+  color: #6b7280;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Problem Mission Section */
+.problemMissionSection {
+  background-color: #f7f8fc;
+}
+
+.problemMissionSection .contentWrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.problemMissionSection .textContent {
+  flex: 1;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.problemMissionSection .textContent h2 {
+  font-size: 2rem;
+  color: #20345b;
+  margin-bottom: 15px;
+}
+
+.problemMissionSection .textContent p {
+  color: #6b7280;
+  line-height: 1.8;
+}
+
+/* Mentor Section */
+.mentorSection {
+  background-color: #f7f8fc;
+}
+
+.mentorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.mentorCard {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  position: relative;
+  padding-top: 80px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mentorCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+.profileImg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: -80px auto 20px auto;
+  border: 5px solid white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mentorCard h3 {
+  font-size: 1.5rem;
+  color: #20345b;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.expertise {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  min-height: 40px;
+}
+
+.rating {
+  color: #f97316;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+/* Loading Skeletons */
+.mentorCard.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.profileImgSkeleton {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin: -80px auto 20px auto;
+}
+
+.nameSkeleton {
+  height: 24px;
+  width: 60%;
+  margin: 0 auto 10px auto;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.ratingSkeleton {
+  height: 20px;
+  width: 40%;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* CTA Section */
+.ctaSection {
+  background-color: #20345b;
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.ctaSection .preTitle {
+  color: #44d4f2;
+}
+
+.ctaSection h2 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+.ctaSection p {
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .whoWeAreHero .contentWrapper,
+  .problemMissionSection .contentWrapper {
+    flex-direction: column;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mentorGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  .sectionTitle h2,
+  .whoWeAreHero h2 {
+    font-size: 2.2rem;
+  }
+
+  .pageTitleSection h1 {
+    font-size: 2rem;
+  }
+
+  .statsWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mentorGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ctaSection h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .whoWeAreHero h2 {
+    font-size: 1.8rem;
+  }
+
+  .sectionTitle h2 {
+    font-size: 1.8rem;
+  }
+
+  .statNumber {
+    font-size: 2.5rem;
+  }
+}

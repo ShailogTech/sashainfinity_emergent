@@ -1,0 +1,56 @@
+services:
+  db:
+    image: postgres:15
+    container_name: sasha_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: sasha_lms
+      POSTGRES_USER: lms_user
+      POSTGRES_PASSWORD: LmsSecure2024!
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5434:5432"
+    networks:
+      - sasha_network
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: sasha_backend
+    restart: always
+    env_file:
+      - ./backend/.env
+    environment:
+      - DATABASE_URL=postgresql://lms_user:LmsSecure2024!@db:5432/sasha_lms
+    volumes:
+      - uploads_data:/app/uploads
+    ports:
+      - "8002:8000"
+    depends_on:
+      - db
+    networks:
+      - sasha_network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: sasha_frontend
+    restart: always
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+    networks:
+      - sasha_network
+
+volumes:
+  postgres_data:
+  uploads_data:
+
+networks:
+  sasha_network:
+    driver: bridge

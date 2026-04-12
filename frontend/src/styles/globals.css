@@ -1,0 +1,703 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Import Google Fonts - SashaInfinity Technology Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+/* CSS Variables for consistent theming */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 98%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217.2 91.2% 59.8%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 217.2 91.2% 59.8%;
+  }
+}
+
+/* Base styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-400;
+  }
+
+  /* Selection styles */
+  ::selection {
+    @apply bg-primary-100 text-primary-900;
+  }
+}
+
+/* Component layer for reusable patterns */
+@layer components {
+  /* Container styles */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Card component base */
+  .card {
+    @apply bg-card text-card-foreground rounded-lg border shadow-soft;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+  }
+
+  /* Button styles - SashaInfinity theme */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500;
+  }
+
+  .btn-outline {
+    @apply border border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white focus:ring-primary-500;
+  }
+
+  .btn-ghost {
+    @apply text-neutral-700 hover:bg-neutral-100 focus:ring-neutral-500;
+  }
+
+  .btn-sm {
+    @apply h-9 px-3 text-xs;
+  }
+
+  .btn-md {
+    @apply h-10 py-2 px-4;
+  }
+
+  .btn-lg {
+    @apply h-12 px-8 text-base;
+  }
+
+  /* Input styles */
+  .input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-primary-100 text-primary-800;
+  }
+
+  .badge-secondary {
+    @apply bg-secondary-100 text-secondary-800;
+  }
+
+  .badge-success {
+    @apply bg-success-100 text-success-800;
+  }
+
+  .badge-warning {
+    @apply bg-warning-100 text-warning-800;
+  }
+
+  .badge-danger {
+    @apply bg-danger-100 text-danger-800;
+  }
+
+  /* Progress bar */
+  .progress {
+    @apply h-2 w-full overflow-hidden rounded-full bg-neutral-200;
+  }
+
+  .progress-bar {
+    @apply h-full bg-primary-500 transition-all duration-300 ease-in-out;
+  }
+
+  /* Star rating */
+  .star-rating {
+    @apply flex items-center gap-1;
+  }
+
+  .star {
+    @apply w-4 h-4 text-yellow-400;
+  }
+
+  .star-filled {
+    @apply fill-current;
+  }
+
+  .star-empty {
+    @apply text-neutral-300;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply inline-block animate-spin rounded-full border-2 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite];
+  }
+
+  /* Course card styles */
+  .course-card {
+    @apply bg-white rounded-lg shadow-soft overflow-hidden transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+  }
+
+  .course-card-image {
+    @apply w-full h-48 object-cover;
+  }
+
+  .course-card-content {
+    @apply p-6;
+  }
+
+  .course-card-title {
+    @apply text-lg font-semibold text-neutral-900 mb-2 line-clamp-2;
+  }
+
+  .course-card-instructor {
+    @apply text-sm text-neutral-600 mb-2;
+  }
+
+  .course-card-price {
+    @apply text-xl font-bold text-primary-600;
+  }
+
+  /* Video player container */
+  .video-container {
+    @apply relative w-full bg-black rounded-lg overflow-hidden;
+  }
+
+  .video-container::before {
+    content: "";
+    @apply block w-full;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+  }
+
+  .video-player {
+    @apply absolute inset-0 w-full h-full;
+  }
+
+  /* Quiz styles */
+  .quiz-container {
+    @apply max-w-4xl mx-auto p-6;
+  }
+
+  .quiz-question {
+    @apply bg-white rounded-lg shadow-soft p-6 mb-6;
+  }
+
+  .quiz-question-title {
+    @apply text-xl font-semibold mb-4;
+  }
+
+  .quiz-answer {
+    @apply p-4 border border-neutral-200 rounded-lg cursor-pointer transition-all duration-200 hover:bg-neutral-50;
+  }
+
+  .quiz-answer-selected {
+    @apply bg-primary-50 border-primary-300;
+  }
+
+  .quiz-answer-correct {
+    @apply bg-success-50 border-success-300;
+  }
+
+  .quiz-answer-incorrect {
+    @apply bg-danger-50 border-danger-300;
+  }
+
+  /* Text utilities */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Glassmorphism effects */
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-black/10 backdrop-blur-lg border border-white/10;
+  }
+}
+
+/* Utility layer for additional helpers */
+@layer utilities {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-in-out;
+  }
+
+  .animate-slide-in-up {
+    animation: slide-in-up 0.5s ease-out;
+  }
+
+  .animate-slide-in-down {
+    animation: slide-in-down 0.5s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+
+  .animate-bounce-in {
+    animation: bounce-in 0.6s ease-out;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+}
+
+/* Third-party component overrides */
+
+/* React Player */
+.react-player {
+  @apply rounded-lg overflow-hidden;
+}
+
+/* Swiper */
+.swiper {
+  @apply rounded-lg;
+}
+
+.swiper-pagination-bullet {
+  @apply bg-primary-500;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-primary-500;
+}
+
+/* React Hot Toast */
+.Toastify__toast {
+  @apply rounded-lg shadow-medium;
+}
+
+.Toastify__toast--success {
+  @apply bg-success-500;
+}
+
+.Toastify__toast--error {
+  @apply bg-danger-500;
+}
+
+.Toastify__toast--warning {
+  @apply bg-warning-500;
+}
+
+.Toastify__toast--info {
+  @apply bg-primary-500;
+}
+
+/* Custom Animations for Enhanced Features */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-down {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-float-up {
+  animation: floatUp 2s ease-out forwards;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* Focus Mode Styles */
+.focus-mode-active {
+  filter: brightness(1.1) contrast(1.05);
+}
+
+.focus-mode-active aside {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Custom Scrollbar for Lesson List */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== HOME PAGE MOBILE RESPONSIVENESS ===== */
+
+/* Hero Section */
+@media (max-width: 768px) {
+  #home {
+    padding-top: 60px !important;
+    min-height: 100svh !important;
+    overflow: hidden !important;
+  }
+  #home > section {
+    min-height: 100svh !important;
+  }
+  /* Left text block */
+  #home [style*="position:'absolute',left:48"] ,
+  #home [style*="left: 48px"] {
+    position: relative !important;
+    left: 0 !important;
+    top: auto !important;
+    transform: none !important;
+    max-width: 100% !important;
+    padding: 80px 20px 20px !important;
+    z-index: 5;
+  }
+  /* Right text block - hide on mobile */
+  #home [style*="position:'absolute',right:48"],
+  #home [style*="right: 48px"] {
+    display: none !important;
+  }
+  /* 3D model - shrink and reposition */
+  #home [style*="translate(-50%,-50%)"] {
+    width: 90% !important;
+    height: 50% !important;
+    top: 45% !important;
+    opacity: 0.3 !important;
+  }
+}
+
+/* About Section */
+@media (max-width: 768px) {
+  #about {
+    padding: 60px 0 !important;
+  }
+  #about > div > div > div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding: 0 16px !important;
+  }
+  #about > div {
+    padding: 0 16px !important;
+  }
+}
+
+/* Categories Section */
+@media (max-width: 768px) {
+  #categories {
+    padding: 60px 0 !important;
+  }
+  #categories > div {
+    padding: 0 16px !important;
+  }
+  #categories [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+/* Blog/News Section */
+@media (max-width: 768px) {
+  #blog {
+    padding: 60px 0 !important;
+  }
+  #blog > div {
+    padding: 0 16px !important;
+  }
+  #blog [style*="repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Testimonials */
+@media (max-width: 768px) {
+  #testimonials {
+    padding: 60px 0 !important;
+  }
+  #testimonials > div {
+    padding: 0 16px !important;
+  }
+}
+
+/* Partners / CTA Section */
+@media (max-width: 768px) {
+  [style*="padding:'72px'"],
+  [style*="padding: 72px"] {
+    padding: 32px 20px !important;
+  }
+  [style*="flexWrap:'wrap'"] {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+}
+
+/* General container padding fix */
+@media (max-width: 768px) {
+  [style*="padding:'0 48px'"],
+  [style*="padding: 0 48px"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  [style*="maxWidth:1200"],
+  [style*="max-width: 1200px"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  [style*="fontSize:42"],
+  [style*="font-size: 42px"] {
+    font-size: 28px !important;
+  }
+  [style*="fontSize:38"],
+  [style*="font-size: 38px"] {
+    font-size: 26px !important;
+  }
+}
+
+/* PublicHeader mobile */
+@media (max-width: 768px) {
+  nav, header {
+    padding: 12px 16px !important;
+  }
+}
+
+/* Stat cards grid */
+@media (max-width: 480px) {
+  [style*="gridTemplateColumns:'1fr 1fr'"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="gap:28"],
+  [style*="gap: 28px"] {
+    gap: 16px !important;
+  }
+  h1, h2, h3 {
+    word-break: break-word;
+  }
+}
+
+/* Team cards + About stats mobile fix */
+@media (max-width: 600px) {
+  /* Team cards - 2 per row on mobile */
+  [style*="minmax(160px,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Card text no overflow */
+  [style*="wordBreak"] {
+    word-break: break-word !important;
+    font-size: 12px !important;
+  }
+  /* About section image card */
+  #about [style*="padding:32"] {
+    padding: 16px !important;
+  }
+  /* Stat items in about */
+  #about [style*="minmax(160px"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Team cards - 1 per row on very small screens */
+  [style*="minmax(160px,1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
