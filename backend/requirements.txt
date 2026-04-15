@@ -24,3 +24,24 @@ numpy>=1.26.0
 python-multipart>=0.0.9
 jq>=1.6.0
 typer>=0.9.0
+# AI/ML dependencies for content management
+SpeechRecognition>=3.10.0
+pydub>=0.25.1
+openai-whisper>=20231117
+torch>=2.1.0
+torchvision>=0.16.0
+transformers>=4.35.0
+sentencepiece>=0.1.99
+librosa>=0.10.0
+soundfile>=0.12.1
+scipy>=1.11.0
+spacy>=3.7.0
+nltk>=3.8.1
+celery>=5.3.4
+redis>=5.0.1
+youtube-transcript-api>=0.6.1
+pysrt>=1.1.2
+webvtt-py>=0.5.0
+# Additional dependencies for AI services
+torch-audio>=2.1.0
+ffmpeg-python>=0.2.0

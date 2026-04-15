@@ -1,15 +1,43 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [localError, setLocalError] = useState("");
 
-  const handleSubmit = (e) => {
+  const { login, error: authError } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get redirect path from location state or default to home
+  const from = location.state?.from?.pathname || "/";
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Login functionality is UI only - no backend connected.");
+    setLocalError("");
+    setLoading(true);
+
+    try {
+      const result = await login(form.email, form.password);
+
+      if (result.success) {
+        // Redirect to the page they came from or home
+        navigate(from, { replace: true });
+      } else {
+        setLocalError(result.error || "Login failed. Please try again.");
+      }
+    } catch (err) {
+      setLocalError("An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const displayError = localError || authError;
 
   return (
     <div className="sasha-auth-page" data-testid="login-page">
@@ -50,23 +78,57 @@ export default function LoginPage() {
             <h3>Welcome back</h3>
             <p className="auth-subtitle">Sign in to your account to continue learning</p>
 
+            {displayError && (
+              <div style={{
+                background: 'rgba(245, 87, 108, 0.1)',
+                color: '#f5576c',
+                padding: '12px 16px',
+                borderRadius: '10px',
+                marginBottom: '20px',
+                fontSize: '14px',
+                fontWeight: '500',
+                border: '1px solid rgba(245, 87, 108, 0.2)'
+              }}>
+                {displayError}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} data-testid="login-form">
               <div className="auth-form-group">
                 <label>Email</label>
                 <div className="auth-input-wrap">
                   <i className="fa-solid fa-envelope"></i>
-                  <input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
-                    placeholder="you@example.com" required data-testid="login-email" />
+                  <input
+                    type="email"
+                    value={form.email}
+                    onChange={e => setForm({ ...form, email: e.target.value })}
+                    placeholder="you@example.com"
+                    required
+                    data-testid="login-email"
+                    disabled={loading}
+                  />
                 </div>
               </div>
               <div className="auth-form-group">
                 <label>Password</label>
                 <div className="auth-input-wrap">
                   <i className="fa-solid fa-lock"></i>
-                  <input type={showPassword ? "text" : "password"} value={form.password}
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={form.password}
                     onChange={e => setForm({ ...form, password: e.target.value })}
-                    placeholder="Enter your password" required data-testid="login-password" />
-                  <button type="button" className="toggle-pass" onClick={() => setShowPassword(!showPassword)} data-testid="toggle-password">
+                    placeholder="Enter your password"
+                    required
+                    data-testid="login-password"
+                    disabled={loading}
+                  />
+                  <button
+                    type="button"
+                    className="toggle-pass"
+                    onClick={() => setShowPassword(!showPassword)}
+                    data-testid="toggle-password"
+                    disabled={loading}
+                  >
                     <i className={`fa-solid ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
                   </button>
                 </div>
@@ -80,8 +142,17 @@ export default function LoginPage() {
                 <button type="button" className="forgot-link" data-testid="forgot-password">Forgot password?</button>
               </div>
 
-              <button type="submit" className="auth-submit-btn" data-testid="login-submit">
-                Sign in <i className="fa-solid fa-arrow-right"></i>
+              <button
+                type="submit"
+                className="auth-submit-btn"
+                data-testid="login-submit"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>Signing in...</>
+                ) : (
+                  <>Sign in <i className="fa-solid fa-arrow-right"></i></>
+                )}
               </button>
             </form>
 

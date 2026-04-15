@@ -1,0 +1,34 @@
+/* Parallax Section Styles - NO ANIMATIONS */
+.parallax-section {
+  position: relative;
+  width: 100%;
+}
+
+/* Parallax Layer */
+.parallax-layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* Parallax Card */
+.parallax-card {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* Parallax Scroll Container */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-section,
+  .parallax-layer,
+  .parallax-card {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

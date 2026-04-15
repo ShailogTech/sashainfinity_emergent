@@ -1,0 +1,232 @@
+/* Sasha Tutor Speech Bubbles */
+.sasha-tutor-container {
+  position: fixed;
+  bottom: 20%;
+  right: 10%;
+  z-index: 1000;
+  max-width: 400px;
+  pointer-events: none; /* Let clicks pass through to 3D model */
+}
+
+.sasha-speech-bubble {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+  pointer-events: auto;
+  animation: bubbleFloat 3s ease-in-out infinite;
+  position: relative;
+}
+
+.sasha-speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: 50px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #764ba2;
+}
+
+@keyframes bubbleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.bubble-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 8px;
+}
+
+.tutor-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bubble-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.8em;
+  transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.bubble-content {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.speech-text {
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0;
+  animation: fadeInText 0.5s ease;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sasha-speech-bubble.typing .speech-text {
+  animation: typingEffect 1s ease;
+}
+
+@keyframes typingEffect {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.bubble-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.next-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(5px);
+}
+
+.step-indicator {
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+
+/* AI Mode Styles */
+.sasha-speech-bubble.ai-mode {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.sasha-speech-bubble.ai-mode::before {
+  border-top: 20px solid #f5576c;
+}
+
+.thinking-animation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1em;
+}
+
+.thinking-animation span:first-child {
+  animation: think 1s ease-in-out infinite;
+}
+
+@keyframes think {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sasha-tutor-container {
+    bottom: 15%;
+    right: 5%;
+    left: 5%;
+    max-width: none;
+  }
+
+  .sasha-speech-bubble {
+    padding: 15px;
+  }
+
+  .speech-text {
+    font-size: 0.9em;
+  }
+
+  .sasha-speech-bubble::before {
+    right: 30px;
+  }
+}
+
+/* Different emotion styles */
+.sasha-speech-bubble.happy {
+  background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.sasha-speech-bubble.excited {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.sasha-speech-bubble.thinking {
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+}
+
+/* Progress indicator for tutorial */
+.tutorial-progress {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  right: 20px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.tutorial-progress-bar {
+  height: 100%;
+  background: white;
+  transition: width 0.5s ease;
+}

@@ -1,0 +1,154 @@
+/* Glassmorphic Demo Styles */
+.glassmorphic-demo {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 60px 48px;
+}
+
+/* Hero Section */
+.demo-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 24px;
+  margin-bottom: 80px;
+}
+
+.demo-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  text-align: center;
+}
+
+.demo-hero-content h1 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.demo-hero-content p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Floating Shapes */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.shape-1 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(244, 145, 26, 0.4), transparent);
+  top: 10%;
+  left: 10%;
+}
+
+.shape-2 {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+  bottom: 20%;
+  right: 15%;
+}
+
+/* Demo Sections */
+.demo-section {
+  margin-bottom: 80px;
+}
+
+.demo-section h2 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+
+.demo-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin: 0 0 40px 0;
+}
+
+/* Demo Button */
+.demo-button {
+  background: linear-gradient(135deg, #f4911a 0%, #ffaa44 100%);
+  color: #1a1a2e;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+}
+
+.demo-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(244, 145, 26, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .glassmorphic-demo {
+    padding: 40px 32px;
+  }
+
+  .demo-hero-content h1 {
+    font-size: 36px;
+  }
+
+  .demo-section h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .glassmorphic-demo {
+    padding: 32px 20px;
+  }
+
+  .demo-hero {
+    min-height: 50vh;
+    margin-bottom: 60px;
+  }
+
+  .demo-hero-content h1 {
+    font-size: 28px;
+  }
+
+  .demo-hero-content p {
+    font-size: 16px;
+  }
+
+  .demo-section {
+    margin-bottom: 60px;
+  }
+
+  .demo-section h2 {
+    font-size: 24px;
+  }
+
+  .demo-subtitle {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .floating-shape {
+    display: none;
+  }
+}

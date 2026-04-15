@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { SashaTutor } from '@/components/core/SashaTutor';
+import { useSashaAnimator } from '@/hooks/core/useSashaAnimator';
 import { Link } from "react-router-dom";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import DashboardDemo from '@/components/ui/DashboardDemo';
+import ParallaxContainer from '@/components/ui/ParallaxContainer';
+import ParallaxShowcase from '@/components/ui/ParallaxShowcase';
+import GlassCard from '@/components/ui/GlassCard';
 
 function HeroSection({ canvasRef }) {
   return (
@@ -440,7 +446,12 @@ function NewsletterSection() {
 
 export default function HomePage() {
   const canvasRef = useRef(null);
+  const [showTutor, setShowTutor] = useState(true);
+  const [sashaMixer, setSashaMixer] = useState(null);
+  const [sashaModel, setSashaModel] = useState(null);
   const particlesRef = useRef(null);
+  // Sasha animator for tutoring system
+  const sashaAnimator = useSashaAnimator(sashaModel, sashaMixer);
   const [scrollTopVisible, setScrollTopVisible] = useState(false);
 
   // 3D Model
@@ -515,8 +526,10 @@ export default function HomePage() {
         if (!spineBone && child.isBone && n.includes("spine")) spineBone = child;
       });
 
-      if (gltf.animations.length > 0) {
+            if (gltf.animations.length > 0) {
         mixer = new THREE.AnimationMixer(model);
+        setSashaMixer(mixer);
+        model.userData.animations = gltf.animations; // Store for animator
         gltf.animations.forEach(clip => mixer.clipAction(clip).play());
       }
     });
@@ -713,6 +726,232 @@ export default function HomePage() {
       <div className="scroll-container">
         <HeroSection canvasRef={canvasRef} />
         <StatsBar />
+
+        {/* Glassmorphic Dashboard Demo Section */}
+        <section style={{
+          padding: 'var(--sasha-section-gap) 0',
+          background: '#ffffff',
+          position: 'relative'
+        }}>
+          <div className="sasha-container">
+            <div className="section-header">
+              <div className="section-label" style={{ justifyContent: "center" }}>
+                Glassmorphic UI System
+              </div>
+              <h2>Experience Modern Design</h2>
+              <p>
+                A complete glassmorphic UI system with bento-box layouts, parallax transitions,
+                and beautiful blur effects. Fully responsive and accessible.
+              </p>
+            </div>
+          </div>
+
+          <ParallaxContainer.Reveal animation="fadeUp">
+            <DashboardDemo />
+          </ParallaxContainer.Reveal>
+        </section>
+
+        {/* Advanced Parallax Showcase */}
+        <ParallaxShowcase />
+
+        {/* Glassmorphic Cards Showcase */}
+        <section style={{
+          padding: 'var(--sasha-section-gap) 0',
+          background: 'linear-gradient(180deg, #ffffff 0%, #fafafa 100%)'
+        }}>
+          <div className="sasha-container">
+            <div className="section-header">
+              <div className="section-label" style={{ justifyContent: "center" }}>
+                Component Library
+              </div>
+              <h2>Glassmorphic Components</h2>
+              <p>Beautiful, reusable glassmorphic components for your next project</p>
+            </div>
+
+            {/* Component Showcase Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '24px',
+              marginBottom: '48px'
+            }}>
+              {/* Card Variants */}
+              <ParallaxContainer.Tilt>
+                <GlassCard variant="default" size="lg" hoverable>
+                  <h3 style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: '#1a1a2e',
+                    marginBottom: '12px'
+                  }}>
+                    Default Card
+                  </h3>
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#6b7280',
+                    lineHeight: '1.7'
+                  }}>
+                    Classic glassmorphic design with subtle blur and transparency
+                  </p>
+                </GlassCard>
+              </ParallaxContainer.Tilt>
+
+              <ParallaxContainer.Tilt>
+                <GlassCard variant="primary" size="lg" hoverable gradient>
+                  <h3 style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: '#1a1a2e',
+                    marginBottom: '12px'
+                  }}>
+                    Primary Card
+                  </h3>
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#6b7280',
+                    lineHeight: '1.7'
+                  }}>
+                    Warm orange gradient perfect for CTAs and highlights
+                  </p>
+                </GlassCard>
+              </ParallaxContainer.Tilt>
+
+              <ParallaxContainer.Tilt>
+                <GlassCard variant="secondary" size="lg" hoverable gradient>
+                  <h3 style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: '#1a1a2e',
+                    marginBottom: '12px'
+                  }}>
+                    Secondary Card
+                  </h3>
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#6b7280',
+                    lineHeight: '1.7'
+                  }}>
+                    Professional blue gradient for business content
+                  </p>
+                </GlassCard>
+              </ParallaxContainer.Tilt>
+
+              <ParallaxContainer.Tilt>
+                <GlassCard variant="accent" size="lg" hoverable gradient>
+                  <h3 style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: '#1a1a2e',
+                    marginBottom: '12px'
+                  }}>
+                    Accent Card
+                  </h3>
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#6b7280',
+                    lineHeight: '1.7'
+                  }}>
+                    Modern purple gradient for creative sections
+                  </p>
+                </GlassCard>
+              </ParallaxContainer.Tilt>
+
+              <ParallaxContainer.Tilt>
+                <GlassCard variant="success" size="lg" hoverable gradient>
+                  <h3 style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: '#1a1a2e',
+                    marginBottom: '12px'
+                  }}>
+                    Success Card
+                  </h3>
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#6b7280',
+                    lineHeight: '1.7'
+                  }}>
+                    Fresh green gradient for achievements and progress
+                  </p>
+                </GlassCard>
+              </ParallaxContainer.Tilt>
+
+              <ParallaxContainer.Tilt>
+                <GlassCard variant="warning" size="lg" hoverable gradient>
+                  <h3 style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: '#1a1a2e',
+                    marginBottom: '12px'
+                  }}>
+                    Warning Card
+                  </h3>
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#6b7280',
+                    lineHeight: '1.7'
+                  }}>
+                    Vibrant red-pink gradient for alerts and notifications
+                  </p>
+                </GlassCard>
+              </ParallaxContainer.Tilt>
+            </div>
+
+            {/* Features Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '20px'
+            }}>
+              {[
+                { icon: '🎨', title: 'Glassmorphic Design', desc: 'Beautiful frosted glass effects with backdrop blur' },
+                { icon: '📦', title: 'Bento Box Layout', desc: 'Modern responsive grid system with flexible sizing' },
+                { icon: '✨', title: 'Parallax Effects', desc: 'Smooth scroll animations with GSAP integration' },
+                { icon: '🎯', title: '3D Tilt Interactions', desc: 'Interactive cards that respond to mouse movement' },
+                { icon: '🌈', title: 'Gradient Variants', desc: 'Multiple color schemes for any design need' },
+                { icon: '📱', title: 'Fully Responsive', desc: 'Perfect display on all device sizes' },
+                { icon: '♿', title: 'Accessible', desc: 'WCAG compliant with reduced motion support' },
+                { icon: '⚡', title: 'Performance', desc: 'Optimized animations with hardware acceleration' },
+              ].map((feature, index) => (
+                <ParallaxContainer.Reveal
+                  key={index}
+                  animation="fadeUp"
+                  delay={index * 0.1}
+                >
+                  <GlassCard
+                    variant="default"
+                    size="md"
+                    hoverable
+                    style={{ height: '100%' }}
+                  >
+                    <div style={{
+                      fontSize: '32px',
+                      marginBottom: '16px'
+                    }}>
+                      {feature.icon}
+                    </div>
+                    <h4 style={{
+                      fontSize: '16px',
+                      fontWeight: 700,
+                      color: '#1a1a2e',
+                      marginBottom: '8px'
+                    }}>
+                      {feature.title}
+                    </h4>
+                    <p style={{
+                      fontSize: '13px',
+                      color: '#6b7280',
+                      lineHeight: '1.6'
+                    }}>
+                      {feature.desc}
+                    </p>
+                  </GlassCard>
+                </ParallaxContainer.Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <ScrollStackSection />
         <AboutSection />
         <CategoriesSection />

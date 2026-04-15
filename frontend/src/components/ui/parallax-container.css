@@ -1,0 +1,262 @@
+/* ===== PARALLAX CONTAINER STYLES - NO ANIMATIONS ===== */
+
+.parallax-container {
+  position: relative;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.parallax-preserve-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* ===== PARALLAX LAYER ===== */
+
+.parallax-layer {
+  position: relative;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ===== PARALLAX TILT ===== */
+
+.parallax-tilt {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: opacity 0.2s ease;
+}
+
+.parallax-tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: overlay;
+}
+
+/* ===== PARALLAX SCROLL TRIGGER ===== */
+
+.parallax-scroll-trigger {
+  opacity: 1;
+}
+
+/* ===== PARALLAX HERO SECTION ===== */
+
+.parallax-hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.parallax-hero-bg {
+  position: absolute;
+  inset: 0;
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+}
+
+.parallax-hero-content {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(0);
+}
+
+/* ===== PARALLAX DEPTH LAYERS ===== */
+
+.parallax-depth-container {
+  position: relative;
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.parallax-depth-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.parallax-depth-layer[data-depth="0"] {
+  transform: translateZ(0);
+}
+
+.parallax-depth-layer[data-depth="-1"] {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-depth-layer[data-depth="-2"] {
+  transform: translateZ(-2px) scale(3);
+}
+
+.parallax-depth-layer[data-depth="1"] {
+  transform: translateZ(1px) scale(0.5);
+}
+
+/* ===== PARALLAX CARD EFFECTS ===== */
+
+.parallax-card-container {
+  position: relative;
+  perspective: 1000px;
+}
+
+.parallax-card {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.parallax-card-content {
+  transform: translateZ(30px);
+}
+
+.parallax-card-background {
+  position: absolute;
+  inset: 0;
+  transform: translateZ(0);
+}
+
+/* ===== MOUSE PARALLAX ===== */
+
+.parallax-mouse-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-mouse-element {
+  position: absolute;
+}
+
+/* ===== SCROLL-ALIGNED PARALLAX ===== */
+
+.parallax-scroll-aligned {
+  position: relative;
+}
+
+.parallax-scroll-aligned-element {
+  position: sticky;
+  top: 0;
+}
+
+/* ===== HORIZONTAL PARALLAX ===== */
+
+.parallax-horizontal {
+  display: flex;
+  width: max-content;
+}
+
+.parallax-horizontal-track {
+  display: flex;
+  gap: 24px;
+  padding: 0 4vw;
+}
+
+/* ===== PARALLAX WITH OVERLAY ===== */
+
+.parallax-with-overlay {
+  position: relative;
+}
+
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== PARALLAX TEXT EFFECTS ===== */
+
+.parallax-text-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-text-reveal-inner {
+  display: inline-block;
+  transform: translateY(0);
+}
+
+/* ===== PARALLAX IMAGE ===== */
+
+.parallax-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-image {
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  transform: translateY(0);
+}
+
+/* ===== MAGNETIC PARALLAX ===== */
+
+.parallax-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===== REDUCED MOTION ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-container,
+  .parallax-layer,
+  .parallax-tilt,
+  .parallax-scroll-trigger,
+  .parallax-mouse-element,
+  .parallax-card {
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+}
+
+/* ===== GPU ACCELERATION ===== */
+
+.parallax-gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ===== PARALLAX VIDEO BACKGROUND ===== */
+
+.parallax-video-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.parallax-video {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ===== PARALLAX GRADIENT BACKGROUND ===== */
+
+.parallax-gradient-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(244, 145, 26, 0.1) 0%,
+    rgba(102, 126, 234, 0.1) 50%,
+    rgba(67, 233, 123, 0.1) 100%
+  );
+  transform: translateZ(-1px) scale(2);
+}

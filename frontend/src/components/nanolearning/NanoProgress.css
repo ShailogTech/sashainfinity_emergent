@@ -1,0 +1,349 @@
+/* Nano Progress Styles */
+.nano-progress {
+  --progress-primary: #667eea;
+  --progress-secondary: #764ba2;
+  --progress-success: #10b981;
+  --progress-warning: #f59e0b;
+  --progress-danger: #ef4444;
+}
+
+/* Main Progress Card */
+.nano-progress-card {
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Header */
+.nano-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.nano-progress-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sasha-dark);
+}
+
+.nano-progress-title i {
+  color: var(--progress-primary);
+  font-size: 18px;
+}
+
+.nano-progress-percentage {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--progress-primary), var(--progress-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Progress Bar */
+.nano-progress-bar-container {
+  position: relative;
+  height: 12px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.nano-progress-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nano-progress-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Milestone Markers */
+.nano-progress-milestones {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.nano-milestone {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #e0e0e0;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.nano-milestone.completed {
+  background: var(--progress-success);
+  border-color: var(--progress-success);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.nano-milestone.current {
+  background: white;
+  border-color: var(--progress-primary);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(102, 126, 234, 0.1); }
+}
+
+.nano-milestone-reward {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Stats Grid */
+.nano-progress-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.nano-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 12px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.nano-stat:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.nano-stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.nano-stat-icon.completed {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--progress-success);
+}
+
+.nano-stat-icon.streak {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--progress-warning);
+}
+
+.nano-stat-icon.points {
+  background: rgba(102, 126, 234, 0.15);
+  color: var(--progress-primary);
+}
+
+.nano-stat-icon.time {
+  background: rgba(107, 114, 128, 0.15);
+  color: var(--sasha-gray);
+}
+
+.nano-stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nano-stat-value {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--sasha-dark);
+  line-height: 1;
+}
+
+.nano-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sasha-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nano-stat-total {
+  font-size: 12px;
+  color: var(--sasha-gray-light);
+  margin-top: 2px;
+}
+
+.nano-stat-best {
+  font-size: 10px;
+  color: var(--progress-warning);
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+/* Achievements */
+.nano-achievements {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(239, 68, 68, 0.05));
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.nano-achievements-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sasha-dark);
+  margin-bottom: 12px;
+}
+
+.nano-achievements-title i {
+  color: var(--progress-warning);
+}
+
+.nano-achievements-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nano-achievement-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sasha-gray);
+  opacity: 0.5;
+}
+
+.nano-achievement-badge.unlocked {
+  opacity: 1;
+  background: linear-gradient(135deg, var(--progress-warning), var(--progress-danger));
+  color: white;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.nano-achievement-badge.legendary {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Message */
+.nano-progress-message {
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sasha-dark);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+/* Mini Progress (Compact) */
+.nano-progress-mini {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nano-progress-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nano-stat-value {
+    font-size: 20px;
+  }
+
+  .nano-achievements-list {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nano-progress-card {
+    padding: 20px;
+  }
+
+  .nano-progress-percentage {
+    font-size: 24px;
+  }
+
+  .nano-progress-stats {
+    gap: 12px;
+  }
+
+  .nano-stat {
+    padding: 12px 8px;
+  }
+
+  .nano-stat-value {
+    font-size: 18px;
+  }
+
+  .nano-achievements {
+    padding: 16px;
+  }
+}

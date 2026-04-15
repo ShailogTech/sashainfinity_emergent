@@ -1,0 +1,50 @@
+# SashaInfinity Frontend Components Structure
+
+## 📁 Directory Organization
+
+### **components/core/**
+Your main, custom SashaInfinity components:
+- `Navbar.js` - Main navigation bar
+- `Footer.js` - Site footer
+- `SplashScreen.js` - Loading screen
+- `SashaTutor.jsx` - 3D animated tutor system
+
+### **components/ui-lib/**
+Reusable UI component library (shadcn/ui):
+- Basic UI primitives (buttons, cards, forms, etc.)
+- Generic components used across the app
+- Not specific to SashaInfinity branding
+
+### **pages/**
+Main application pages:
+- `HomePage.js` - Landing page with 3D character
+- `CoursesPage.js` - Course listing
+- `BlogPage.js` - Blog section
+- `admin/` - Admin panel pages
+
+### **pages/backup/** (Optional)
+Backup or alternative versions of pages:
+- Old designs
+- Experimental layouts
+- Staging versions
+
+## 🎯 Usage Guidelines
+
+**Use `components/core/` for:**
+- SashaInfinity-specific components
+- Branded elements
+- Business logic components
+- Complex interactive features
+
+**Use `components/ui-lib/` for:**
+- Generic UI elements
+- Form components
+- Layout utilities
+- Reusable design system pieces
+
+## 🔄 Migration Process
+
+1. Keep current `components/ui/` as `components/ui-lib/`
+2. Move custom components to `components/core/`
+3. Update imports in your pages
+4. Test everything works

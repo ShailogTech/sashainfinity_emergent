@@ -1,0 +1,112 @@
+/* Bento Grid System */
+.bento-grid {
+  display: grid;
+  gap: var(--bento-gap, 24px);
+  width: 100%;
+  grid-template-columns: repeat(var(--bento-columns, 4), 1fr);
+  transition: all 0.3s ease;
+}
+
+.bento-item {
+  position: relative;
+  min-height: 200px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+/* Responsive Bento Grid */
+@media (max-width: 1200px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .bento-item {
+    min-height: 180px;
+  }
+}
+
+/* Bento Item Hover Effects */
+.bento-item:hover {
+  transform: translateY(-4px);
+  z-index: 2;
+}
+
+/* Animation for items entering */
+@keyframes bentoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.bento-item {
+  animation: bentoFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* Stagger animation delays */
+.bento-item:nth-child(1) { animation-delay: 0.05s; }
+.bento-item:nth-child(2) { animation-delay: 0.1s; }
+.bento-item:nth-child(3) { animation-delay: 0.15s; }
+.bento-item:nth-child(4) { animation-delay: 0.2s; }
+.bento-item:nth-child(5) { animation-delay: 0.25s; }
+.bento-item:nth-child(6) { animation-delay: 0.3s; }
+.bento-item:nth-child(7) { animation-delay: 0.35s; }
+.bento-item:nth-child(8) { animation-delay: 0.4s; }
+.bento-item:nth-child(n+9) { animation-delay: 0.45s; }
+
+/* Bento Grid with Auto-fit */
+.bento-grid[data-auto-fit="true"] {
+  grid-template-columns: repeat(auto-fit, minmax(var(--bento-min-width, 280px), 1fr));
+}
+
+/* Special Bento Item Sizes */
+.bento-item-full {
+  grid-column: 1 / -1;
+}
+
+.bento-item-half {
+  grid-column: span 2;
+}
+
+.bento-item-tall {
+  grid-row: span 2;
+}
+
+@media (max-width: 900px) {
+  .bento-item-half {
+    grid-column: span 1;
+  }
+}
+
+/* Bento Item Content Padding */
+.bento-item-content {
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive padding */
+@media (max-width: 600px) {
+  .bento-item-content {
+    padding: 20px;
+  }
+}
